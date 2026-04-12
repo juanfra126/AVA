@@ -1,215 +1,930 @@
+
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AVA — Joyería</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+<title>AVA Jewelry — Colección</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #9A7A2E;
+    --cream: #FAF8F4;
+    --ivory: #F3EFE7;
+    --charcoal: #1A1612;
+    --warm-gray: #6B6560;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: #111;
-  background: linear-gradient(to bottom, #ffffff, #f4f4f4);
+background: var(–cream);
+color: var(–charcoal);
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 200;
+overflow-x: hidden;
+cursor: none;
 }
 
-/* HEADER */
-header {
-  padding: 50px 20px 10px;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
-  letter-spacing: 8px;
+/* Custom cursor */
+.cursor {
+width: 10px; height: 10px;
+background: var(–gold);
+border-radius: 50%;
+position: fixed;
+top: 0; left: 0;
+pointer-events: none;
+z-index: 9999;
+transition: transform 0.15s ease;
+}
+.cursor-ring {
+width: 36px; height: 36px;
+border: 1px solid var(–gold);
+border-radius: 50%;
+position: fixed;
+top: 0; left: 0;
+pointer-events: none;
+z-index: 9998;
+transition: all 0.35s cubic-bezier(.17,.67,.83,.67);
+opacity: 0.6;
 }
 
 /* NAV */
 nav {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  font-size: 13px;
-  margin-bottom: 40px;
+position: fixed; top: 0; left: 0; right: 0;
+z-index: 100;
+padding: 28px 60px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+mix-blend-mode: normal;
 }
-
-nav a {
-  text-decoration: none;
-  color: #777;
+nav::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(to bottom, rgba(250,248,244,0.95) 0%, transparent 100%);
+pointer-events: none;
 }
-
-nav a:hover {
-  color: #000;
+.nav-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.6rem;
+font-weight: 300;
+letter-spacing: 0.35em;
+color: var(–gold-dark);
+text-decoration: none;
+position: relative;
 }
+.nav-links {
+display: flex;
+gap: 50px;
+list-style: none;
+position: relative;
+}
+.nav-links a {
+text-decoration: none;
+font-size: 0.65rem;
+letter-spacing: 0.25em;
+color: var(–charcoal);
+text-transform: uppercase;
+transition: color 0.3s;
+}
+.nav-links a:hover { color: var(–gold); }
+.nav-cart {
+position: relative;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–charcoal);
+cursor: none;
+padding: 10px 24px;
+border: 1px solid var(–gold);
+transition: all 0.3s;
+}
+.nav-cart:hover { background: var(–gold); color: var(–cream); }
 
 /* HERO */
 .hero {
-  height: 75vh;
-  background: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+position: relative;
+overflow: hidden;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.5);
+.hero-left {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 120px 80px 80px 100px;
+position: relative;
+z-index: 2;
 }
 
-.hero h1 {
-  position: relative;
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  font-weight: 400;
-  letter-spacing: 3px;
+.hero-eyebrow {
+font-size: 0.6rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 32px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+.hero-eyebrow::before {
+content: ‘’;
+width: 40px;
+height: 1px;
+background: var(–gold);
 }
 
-/* SECTIONS */
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(3.5rem, 6vw, 5.5rem);
+font-weight: 300;
+line-height: 1.05;
+color: var(–charcoal);
+margin-bottom: 32px;
+}
+.hero-title em {
+font-style: italic;
+color: var(–gold-dark);
+}
+
+.hero-desc {
+font-size: 0.75rem;
+letter-spacing: 0.1em;
+line-height: 2;
+color: var(–warm-gray);
+max-width: 360px;
+margin-bottom: 56px;
+}
+
+.hero-cta {
+display: inline-flex;
+align-items: center;
+gap: 20px;
+text-decoration: none;
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–charcoal);
+position: relative;
+cursor: none;
+}
+.hero-cta::after {
+content: ‘’;
+width: 60px;
+height: 1px;
+background: var(–gold);
+transition: width 0.4s ease;
+}
+.hero-cta:hover::after { width: 100px; }
+
+.hero-right {
+position: relative;
+background: var(–ivory);
+overflow: hidden;
+}
+.hero-right::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.12) 0%, transparent 70%);
+}
+
+.hero-image-placeholder {
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+
+/* Decorative jewelry SVG composition */
+.hero-decor {
+position: absolute;
+width: 75%;
+height: 75%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+.hero-logo-display {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
+.hero-logo-display .big-ava {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(6rem, 14vw, 11rem);
+font-weight: 300;
+color: transparent;
+-webkit-text-stroke: 1px rgba(201,168,76,0.3);
+letter-spacing: 0.1em;
+line-height: 1;
+animation: fadeUp 1.5s ease forwards;
+}
+.hero-tagline-float {
+font-size: 0.55rem;
+letter-spacing: 0.45em;
+text-transform: uppercase;
+color: var(–gold);
+margin-top: 12px;
+animation: fadeUp 1.5s 0.3s ease both;
+}
+
+/* Floating ornaments */
+.ornament {
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(201,168,76,0.2);
+animation: orbit 12s linear infinite;
+}
+.ornament-1 { width: 300px; height: 300px; top: 15%; left: 10%; animation-duration: 18s; }
+.ornament-2 { width: 180px; height: 180px; bottom: 20%; right: 15%; animation-duration: 12s; animation-direction: reverse; }
+.ornament-3 { width: 80px; height: 80px; top: 60%; left: 20%; animation-duration: 8s; }
+
+@keyframes orbit {
+from { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+to   { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
+}
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+/* MARQUEE */
+.marquee-wrap {
+background: var(–charcoal);
+overflow: hidden;
+padding: 18px 0;
+position: relative;
+}
+.marquee-track {
+display: flex;
+gap: 0;
+animation: marquee 20s linear infinite;
+white-space: nowrap;
+}
+.marquee-item {
+font-size: 0.6rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–gold-light);
+padding: 0 60px;
+flex-shrink: 0;
+}
+.marquee-dot {
+color: var(–gold);
+margin: 0 16px;
+}
+@keyframes marquee {
+from { transform: translateX(0); }
+to   { transform: translateX(-50%); }
+}
+
+/* SECTION: FEATURED */
 .section {
-  padding: 80px 20px;
-  text-align: center;
+padding: 120px 80px;
+}
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 70px;
+}
+.section-label {
+font-size: 0.6rem;
+letter-spacing: 0.4em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 16px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+.section-label::before {
+content: ‘’;
+width: 30px;
+height: 1px;
+background: var(–gold);
+}
+.section-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2rem, 4vw, 3.2rem);
+font-weight: 300;
+line-height: 1.2;
+}
+.section-link {
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–warm-gray);
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 16px;
+cursor: none;
+transition: color 0.3s;
+}
+.section-link::after {
+content: ‘→’;
+font-size: 1rem;
+transition: transform 0.3s;
+}
+.section-link:hover { color: var(–gold); }
+.section-link:hover::after { transform: translateX(6px); }
+
+/* PRODUCT GRID */
+.product-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px;
 }
 
-.section h2 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 40px;
+.product-card {
+position: relative;
+cursor: none;
+overflow: hidden;
+background: var(–ivory);
+}
+.product-card:first-child {
+grid-row: span 2;
 }
 
-/* PRODUCTS */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 40px;
-  max-width: 1000px;
-  margin: auto;
+.product-img {
+width: 100%;
+aspect-ratio: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+background: var(–ivory);
+position: relative;
+overflow: hidden;
+transition: transform 0.7s cubic-bezier(.25,.46,.45,.94);
+}
+.product-card:first-child .product-img {
+aspect-ratio: auto;
+height: 100%;
+min-height: 500px;
+}
+.product-card:hover .product-img {
+transform: scale(1.04);
 }
 
-.card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  transition: 0.3s;
+/* Jewelry illustrations (SVG placeholders) */
+.jewel-svg {
+width: 55%;
+height: 55%;
+opacity: 0.85;
+transition: opacity 0.4s, transform 0.5s;
+}
+.product-card:hover .jewel-svg {
+opacity: 1;
+transform: scale(1.08) rotate(3deg);
 }
 
-.card:hover {
-  transform: translateY(-6px);
+.product-overlay {
+position: absolute;
+bottom: 0; left: 0; right: 0;
+padding: 28px 28px;
+background: linear-gradient(to top, rgba(26,22,18,0.85) 0%, transparent 100%);
+transform: translateY(20px);
+opacity: 0;
+transition: all 0.4s ease;
+}
+.product-card:hover .product-overlay { opacity: 1; transform: translateY(0); }
+
+.product-add {
+font-size: 0.55rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–gold-light);
+border: 1px solid rgba(201,168,76,0.6);
+padding: 10px 24px;
+background: transparent;
+cursor: none;
+transition: background 0.3s;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 300;
+}
+.product-add:hover { background: rgba(201,168,76,0.15); }
+
+.product-info {
+padding: 24px 24px 32px;
+}
+.product-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.15rem;
+font-weight: 400;
+margin-bottom: 6px;
+}
+.product-sub {
+font-size: 0.6rem;
+letter-spacing: 0.2em;
+color: var(–warm-gray);
+text-transform: uppercase;
+margin-bottom: 10px;
+}
+.product-price {
+font-size: 0.75rem;
+letter-spacing: 0.1em;
+color: var(–gold-dark);
 }
 
-.card img {
-  width: 100%;
+/* SPLIT BANNER */
+.split-banner {
+display: grid;
+grid-template-columns: 1fr 1fr;
+min-height: 600px;
+}
+.split-left {
+background: var(–charcoal);
+padding: 100px 80px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.split-left .section-label { color: rgba(201,168,76,0.7); }
+.split-left .section-label::before { background: rgba(201,168,76,0.7); }
+.split-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(2.5rem, 4vw, 3.8rem);
+font-weight: 300;
+color: var(–cream);
+line-height: 1.15;
+margin-bottom: 28px;
+}
+.split-title em { font-style: italic; color: var(–gold-light); }
+.split-desc {
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+line-height: 2.2;
+color: rgba(250,248,244,0.55);
+max-width: 380px;
+margin-bottom: 50px;
+}
+.btn-gold {
+display: inline-block;
+background: var(–gold);
+color: var(–charcoal);
+font-size: 0.6rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+padding: 16px 40px;
+text-decoration: none;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 400;
+cursor: none;
+transition: background 0.3s, transform 0.2s;
+}
+.btn-gold:hover { background: var(–gold-light); transform: translateY(-2px); }
+
+.split-right {
+background: var(–ivory);
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+.split-right::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
 }
 
-.card h3 {
-  margin: 15px 0 5px;
-  font-weight: 400;
+/* TESTIMONIALS */
+.testimonials {
+padding: 120px 80px;
+text-align: center;
 }
-
-.card p {
-  font-size: 13px;
-  color: #777;
+.testimonial-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 60px;
+margin-top: 80px;
 }
-
-.btn {
-  display: inline-block;
-  margin: 15px;
-  padding: 8px 18px;
-  border: 1px solid #111;
-  text-decoration: none;
-  font-size: 12px;
-  color: #111;
+.testimonial {
+position: relative;
+padding: 40px 32px;
+border-top: 1px solid rgba(201,168,76,0.3);
 }
-
-.btn:hover {
-  background: #111;
-  color: white;
+.stars {
+color: var(–gold);
+font-size: 0.8rem;
+letter-spacing: 4px;
+margin-bottom: 24px;
 }
-
-/* ABOUT BLOQUE CON FONDO */
-.about-section {
-  background: #f8f8f8;
-  padding: 80px 20px;
+.testimonial-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 1.05rem;
+font-style: italic;
+line-height: 1.7;
+color: var(–charcoal);
+margin-bottom: 28px;
 }
-
-.about {
-  max-width: 500px;
-  margin: auto;
-  color: #555;
-  line-height: 1.6;
+.testimonial-author {
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+text-transform: uppercase;
+color: var(–warm-gray);
 }
 
 /* FOOTER */
 footer {
-  padding: 30px;
-  text-align: center;
-  font-size: 12px;
-  color: #aaa;
+background: var(–charcoal);
+padding: 80px;
+display: grid;
+grid-template-columns: 2fr 1fr 1fr 1fr;
+gap: 60px;
+border-top: 1px solid rgba(201,168,76,0.15);
+}
+.footer-brand .brand-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 2.2rem;
+font-weight: 300;
+color: var(–gold);
+letter-spacing: 0.2em;
+margin-bottom: 20px;
+}
+.footer-brand p {
+font-size: 0.65rem;
+letter-spacing: 0.08em;
+line-height: 2;
+color: rgba(250,248,244,0.4);
+max-width: 280px;
+}
+.footer-col h4 {
+font-size: 0.6rem;
+letter-spacing: 0.35em;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 28px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li {
+margin-bottom: 14px;
+}
+.footer-col ul li a {
+text-decoration: none;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+color: rgba(250,248,244,0.45);
+cursor: none;
+transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(–gold-light); }
+.footer-bottom {
+background: var(–charcoal);
+padding: 24px 80px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-top: 1px solid rgba(201,168,76,0.08);
+}
+.footer-bottom p {
+font-size: 0.55rem;
+letter-spacing: 0.2em;
+color: rgba(250,248,244,0.25);
+}
+
+/* Animations on scroll */
+.reveal {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* RING decoration SVG */
+.ring-decor {
+width: 220px; height: 220px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<header>AVA</header>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
 
 <nav>
-  <a href="#">Inicio</a>
-  <a href="#">Colección</a>
-  <a href="#">Contacto</a>
+  <a href="#" class="nav-logo">AVA</a>
+  <ul class="nav-links">
+    <li><a href="#">Colecciones</a></li>
+    <li><a href="#">Anillos</a></li>
+    <li><a href="#">Collares</a></li>
+    <li><a href="#">Nosotros</a></li>
+  </ul>
+  <div class="nav-cart">Bolsa (0)</div>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
-  <h1>Elegancia que se siente</h1>
-</section>
-
-<section class="section">
-  <h2>Colección</h2>
-
-  <div class="products">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1589987607627-1a01c9e4c3c4">
-      <h3>Anillo Essential</h3>
-      <p>Acero inoxidable</p>
-      <a href="https://wa.me/543456024493" class="btn">Comprar</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-      <h3>Collar Fine</h3>
-      <p>Baño en oro</p>
-      <a href="https://wa.me/543456024493" class="btn">Comprar</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
-      <h3>Aros Classic</h3>
-      <p>Diseño simple</p>
-      <a href="https://wa.me/543456024493" class="btn">Comprar</a>
-    </div>
-  </div>
-</section>
-
-<section class="about-section">
-  <div class="about">
-    <h2>AVA</h2>
-    <p>
-      AVA nace de la búsqueda de lo simple pero significativo. 
-      Cada pieza acompaña tu estilo con elegancia, sutileza y presencia.
+  <div class="hero-left">
+    <div class="hero-eyebrow">Nueva Colección 2025</div>
+    <h1 class="hero-title">
+      El lujo que<br>
+      <em>te define</em>
+    </h1>
+    <p class="hero-desc">
+      Cada pieza AVA nace de la intersección entre la artesanía ancestral y el diseño contemporáneo. Joyas que no solo adornan — narran.
     </p>
+    <a href="#coleccion" class="hero-cta">Explorar colección</a>
+  </div>
+  <div class="hero-right">
+    <div class="ornament ornament-1"></div>
+    <div class="ornament ornament-2"></div>
+    <div class="ornament ornament-3"></div>
+    <div class="hero-logo-display">
+      <div class="big-ava">AVA</div>
+      <div class="hero-tagline-float">Jewelry · Est. 2024</div>
+    </div>
+    <!-- Decorative ring SVG -->
+    <svg style="position:absolute;bottom:12%;right:12%;opacity:0.5" width="100" height="100" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="50" cy="50" r="30" fill="none" stroke="#C9A84C" stroke-width="0.5" stroke-dasharray="4 4"/>
+    </svg>
+    <svg style="position:absolute;top:18%;left:18%;opacity:0.35" width="60" height="60" viewBox="0 0 60 60">
+      <polygon points="30,5 35,25 55,25 39,37 45,57 30,45 15,57 21,37 5,25 25,25" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
+    </svg>
   </div>
 </section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Oro 18K <span class="marquee-dot">✦</span> Diamantes Certificados <span class="marquee-dot">✦</span> Hecho a Mano <span class="marquee-dot">✦</span> Envío Seguro <span class="marquee-dot">✦</span> Garantía Vitalicia <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Oro 18K <span class="marquee-dot">✦</span> Diamantes Certificados <span class="marquee-dot">✦</span> Hecho a Mano <span class="marquee-dot">✦</span> Envío Seguro <span class="marquee-dot">✦</span> Garantía Vitalicia <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Oro 18K <span class="marquue-dot">✦</span> Diamantes Certificados <span class="marquee-dot">✦</span> Hecho a Mano <span class="marquee-dot">✦</span> Envío Seguro <span class="marquee-dot">✦</span> Garantía Vitalicia <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="coleccion">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Destacados</div>
+      <h2 class="section-title">Piezas Estelares</h2>
+    </div>
+    <a href="#" class="section-link">Ver todo</a>
+  </div>
+
+  <div class="product-grid">
+    <!-- Card 1 – tall -->
+    <div class="product-card reveal">
+      <div class="product-img">
+        <svg class="jewel-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Necklace with pendant -->
+          <ellipse cx="100" cy="60" rx="70" ry="50" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+          <circle cx="100" cy="115" r="18" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.08)"/>
+          <circle cx="100" cy="115" r="10" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+          <line x1="100" y1="60" x2="100" y2="97" stroke="#C9A84C" stroke-width="1.5"/>
+          <circle cx="100" cy="115" r="3" fill="#C9A84C"/>
+          <!-- sparkles -->
+          <path d="M85 100 L87 104 L91 106 L87 108 L85 112 L83 108 L79 106 L83 104 Z" fill="#E8D5A3" opacity="0.6"/>
+          <path d="M115 95 L116.5 98 L120 100 L116.5 102 L115 105 L113.5 102 L110 100 L113.5 98 Z" fill="#E8D5A3" opacity="0.5"/>
+        </svg>
+        <div class="product-overlay">
+          <button class="product-add">Agregar al carrito</button>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-sub">Collar · Oro 18K</div>
+        <div class="product-name">Estrella Eternal</div>
+        <div class="product-price">$2,850 USD</div>
+      </div>
+    </div>
+
+```
+<!-- Card 2 -->
+<div class="product-card reveal" style="transition-delay:0.1s">
+  <div class="product-img">
+    <svg class="jewel-svg" viewBox="0 0 200 200" fill="none">
+      <!-- Ring -->
+      <ellipse cx="100" cy="115" rx="45" ry="18" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <ellipse cx="100" cy="85" rx="45" ry="18" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <line x1="55" y1="85" x2="55" y2="115" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="145" y1="85" x2="145" y2="115" stroke="#C9A84C" stroke-width="1.5"/>
+      <!-- Diamond on top -->
+      <polygon points="100,55 115,75 100,85 85,75" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="100,85 115,75 100,78 85,75" fill="rgba(201,168,76,0.25)" stroke="#C9A84C" stroke-width="0.5"/>
+      <line x1="100" y1="55" x2="100" y2="85" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+      <line x1="85" y1="75" x2="115" y2="75" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+    <div class="product-overlay">
+      <button class="product-add">Agregar al carrito</button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-sub">Anillo · Diamante</div>
+    <div class="product-name">Solitario Lumière</div>
+    <div class="product-price">$4,200 USD</div>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="product-card reveal" style="transition-delay:0.2s">
+  <div class="product-img">
+    <svg class="jewel-svg" viewBox="0 0 200 200" fill="none">
+      <!-- Earrings pair -->
+      <circle cx="70" cy="80" r="20" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
+      <circle cx="130" cy="80" r="20" stroke="#C9A84C" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
+      <circle cx="70" cy="80" r="10" stroke="#C9A84C" stroke-width="1" fill="rgba(201,168,76,0.15)"/>
+      <circle cx="130" cy="80" r="10" stroke="#C9A84C" stroke-width="1" fill="rgba(201,168,76,0.15)"/>
+      <line x1="70" y1="100" x2="70" y2="140" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="130" y1="100" x2="130" y2="140" stroke="#C9A84C" stroke-width="1.5"/>
+      <ellipse cx="70" cy="144" rx="8" ry="12" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <ellipse cx="130" cy="144" rx="8" ry="12" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="70" cy="57" r="5" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="130" cy="57" r="5" fill="#C9A84C" opacity="0.6"/>
+    </svg>
+    <div class="product-overlay">
+      <button class="product-add">Agregar al carrito</button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-sub">Aretes · Oro Rosa</div>
+    <div class="product-name">Dúo Céleste</div>
+    <div class="product-price">$1,490 USD</div>
+  </div>
+</div>
+
+<!-- Card 4 -->
+<div class="product-card reveal" style="transition-delay:0.3s">
+  <div class="product-img">
+    <svg class="jewel-svg" viewBox="0 0 200 200" fill="none">
+      <!-- Bracelet -->
+      <ellipse cx="100" cy="100" rx="65" ry="40" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      <ellipse cx="100" cy="100" rx="55" ry="30" stroke="#C9A84C" stroke-width="0.5" fill="none" opacity="0.4"/>
+      <!-- gems on bracelet -->
+      <circle cx="165" cy="100" r="6" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="35" cy="100" r="6" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="133" cy="65" r="5" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="67" cy="65" r="5" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="133" cy="135" r="5" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <circle cx="67" cy="135" r="5" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+    </svg>
+    <div class="product-overlay">
+      <button class="product-add">Agregar al carrito</button>
+    </div>
+  </div>
+  <div class="product-info">
+    <div class="product-sub">Pulsera · Rubíes</div>
+    <div class="product-name">Aurora Pavé</div>
+    <div class="product-price">$3,100 USD</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- SPLIT BANNER -->
+
+<div class="split-banner">
+  <div class="split-left reveal">
+    <div class="section-label">Nuestra Promesa</div>
+    <h2 class="split-title">Artesanía que<br><em>trasciende</em><br>generaciones</h2>
+    <p class="split-desc">
+      Cada joya AVA pasa por las manos de maestros orfebres con décadas de experiencia. Usamos únicamente materiales certificados y sostenibles. La excelencia no es opcional — es nuestra firma.
+    </p>
+    <a href="#" class="btn-gold">Conocer nuestra historia</a>
+  </div>
+  <div class="split-right">
+    <!-- Large decorative composition -->
+    <svg width="340" height="340" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1">
+      <circle cx="170" cy="170" r="150" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="170" cy="170" r="120" stroke="#C9A84C" stroke-width="1" opacity="0.2"/>
+      <circle cx="170" cy="170" r="80" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+      <!-- Diamond facets -->
+      <polygon points="170,40 220,120 170,150 120,120" fill="rgba(201,168,76,0.06)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="170,150 220,120 250,180 170,190" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="170,150 120,120 90,180 170,190" fill="rgba(201,168,76,0.08)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="170,190 250,180 220,260 170,280" fill="rgba(201,168,76,0.05)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="170,190 90,180 120,260 170,280" fill="rgba(201,168,76,0.07)" stroke="#C9A84C" stroke-width="1"/>
+      <polygon points="170,280 220,260 170,300 120,260" fill="rgba(201,168,76,0.04)" stroke="#C9A84C" stroke-width="1"/>
+      <!-- Center gem -->
+      <circle cx="170" cy="170" r="18" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="170" cy="170" r="8" fill="#C9A84C" opacity="0.4"/>
+      <!-- Star accents -->
+      <path d="M170 40 L172 46 L178 48 L172 50 L170 56 L168 50 L162 48 L168 46 Z" fill="#C9A84C" opacity="0.7"/>
+      <path d="M300 170 L302 176 L308 178 L302 180 L300 186 L298 180 L292 178 L298 176 Z" fill="#C9A84C" opacity="0.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials">
+  <div class="section-label" style="justify-content:center;margin-bottom:16px">
+    <span></span>Clientes AVA
+  </div>
+  <h2 class="section-title reveal">Lo que dicen de nosotras</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Mi anillo de compromiso AVA es absolutamente perfecto. La calidad supera cualquier expectativa. Es la joya más hermosa que jamás he tenido."</p>
+      <div class="testimonial-author">— Sofía M., Ciudad de México</div>
+    </div>
+    <div class="testimonial reveal" style="transition-delay:0.15s">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Le regalé el collar Estrella Eternal a mi madre y lloró de emoción. AVA entiende lo que significa dar una joya de verdad."</p>
+      <div class="testimonial-author">— Carolina R., Buenos Aires</div>
+    </div>
+    <div class="testimonial reveal" style="transition-delay:0.3s">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"La atención al detalle es incomparable. Desde el empaque hasta la pieza misma, todo respira lujo y cuidado. Mi nueva marca favorita."</p>
+      <div class="testimonial-author">— Valentina P., Bogotá</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-  © 2026 AVA
+  <div class="footer-brand">
+    <div class="brand-name">AVA</div>
+    <p>Joyería de alta artesanía para quienes saben que los detalles definen el carácter. Cada pieza, una historia.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Colecciones</h4>
+    <ul>
+      <li><a href="#">Anillos</a></li>
+      <li><a href="#">Collares</a></li>
+      <li><a href="#">Aretes</a></li>
+      <li><a href="#">Pulseras</a></li>
+      <li><a href="#">Edición Limitada</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Comprar</h4>
+    <ul>
+      <li><a href="#">Cómo comprar</a></li>
+      <li><a href="#">Tallas y guía</a></li>
+      <li><a href="#">Envíos</a></li>
+      <li><a href="#">Devoluciones</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>AVA</h4>
+    <ul>
+      <li><a href="#">Nuestra historia</a></li>
+      <li><a href="#">Materiales</a></li>
+      <li><a href="#">Sostenibilidad</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
 </footer>
+<div class="footer-bottom">
+  <p>© 2025 AVA Jewelry. Todos los derechos reservados.</p>
+  <p>Diseño exclusivo · Hecho con amor</p>
+</div>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - 5 + 'px';
+    cursor.style.top = e.clientY - 5 + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX - 18 + 'px';
+      ring.style.top = e.clientY - 18 + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button, .product-card, .nav-cart').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.transform = 'scale(1.8)'; ring.style.borderColor = '#C9A84C'; });
+    el.addEventListener('mouseleave', () => { ring.style.transform = 'scale(1)'; });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
 
 </body>
 </html>
