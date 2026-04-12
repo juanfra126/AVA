@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AVA — Joyería</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,29 +16,29 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #111;
+      background-color: #f5f5f5;
+      color: #1a1a1a;
     }
 
     header {
-      padding: 50px 20px 20px;
+      padding: 40px;
       text-align: center;
       font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      letter-spacing: 8px;
+      font-size: 32px;
+      letter-spacing: 5px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 25px;
-      font-size: 13px;
-      margin-bottom: 50px;
+      gap: 30px;
+      font-size: 14px;
+      margin-bottom: 40px;
     }
 
     nav a {
       text-decoration: none;
-      color: #777;
+      color: #555;
       transition: 0.3s;
     }
 
@@ -47,99 +47,79 @@
     }
 
     .hero {
-      height: 60vh;
-      background: url('https://images.unsplash.com/photo-1602752250015-52934bc45613') center/cover;
+      height: 70vh;
+      background: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338') center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      font-weight: 400;
-      background: rgba(255,255,255,0.7);
-      padding: 15px 30px;
-      letter-spacing: 2px;
+      font-size: 48px;
+      background: rgba(0,0,0,0.4);
+      padding: 20px 40px;
     }
 
     .section {
-      padding: 80px 20px;
+      padding: 60px 20px;
       text-align: center;
-    }
-
-    .section h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      margin-bottom: 30px;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      max-width: 1000px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
     .card {
-      background: #fff;
-      border: 1px solid #eee;
-      padding: 15px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      border-color: #ccc;
+      transform: translateY(-5px);
     }
 
     .card img {
       width: 100%;
+      border-radius: 10px;
     }
 
     .card h3 {
-      margin-top: 12px;
+      margin-top: 15px;
       font-weight: 400;
-      font-size: 16px;
     }
 
     .card p {
-      font-size: 13px;
       color: #777;
+      font-size: 14px;
     }
 
     .btn {
       display: inline-block;
       margin-top: 10px;
-      padding: 8px 18px;
-      border: 1px solid #111;
+      padding: 10px 20px;
+      border: 1px solid #000;
       text-decoration: none;
-      font-size: 12px;
-      color: #111;
+      color: black;
       transition: 0.3s;
     }
 
     .btn:hover {
-      background: #111;
-      color: #fff;
-    }
-
-    .about {
-      max-width: 500px;
-      margin: auto;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.6;
+      background: black;
+      color: white;
     }
 
     footer {
-      margin-top: 60px;
-      padding: 30px;
+      padding: 40px;
       text-align: center;
-      font-size: 12px;
-      color: #aaa;
-      border-top: 1px solid #eee;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
@@ -151,11 +131,12 @@
 <nav>
   <a href="#">Inicio</a>
   <a href="#">Colección</a>
+  <a href="#">Nosotros</a>
   <a href="#">Contacto</a>
 </nav>
 
 <section class="hero">
-  <h1>Elegancia minimal</h1>
+  <h1>Elegancia que trasciende</h1>
 </section>
 
 <section class="section">
@@ -165,22 +146,22 @@
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1589987607627-1a01c9e4c3c4">
-      <h3>Anillo Essential</h3>
+      <h3>Anillo Minimal</h3>
       <p>Acero inoxidable</p>
       <a href="https://wa.me/543456024493" class="btn">Comprar</a>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f">
-      <h3>Collar Fine</h3>
+      <h3>Collar AVA</h3>
       <p>Baño en oro</p>
       <a href="https://wa.me/543456024493" class="btn">Comprar</a>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d">
-      <h3>Aros Classic</h3>
-      <p>Diseño simple</p>
+      <h3>Aros Clásicos</h3>
+      <p>Diseño europeo</p>
       <a href="https://wa.me/543456024493" class="btn">Comprar</a>
     </div>
 
@@ -188,15 +169,12 @@
 </section>
 
 <section class="section">
-  <h2>AVA</h2>
-  <p class="about">
-    AVA representa una estética limpia, sofisticada y atemporal. 
-    Cada pieza está pensada para acompañar tu estilo con sutileza y elegancia.
-  </p>
+  <h2>Sobre AVA</h2>
+  <p>AVA es una marca de joyería que combina elegancia, minimalismo y diseño atemporal.</p>
 </section>
 
 <footer>
-  © 2026 AVA
+  © 2026 AVA — Todos los derechos reservados
 </footer>
 
 </body>
