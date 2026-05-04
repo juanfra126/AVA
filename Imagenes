@@ -1,0 +1,24 @@
+<div class="products">
+
+  <div class="card">
+    <img src="imagenes/aros-textura.jpg" alt="Aros Éter">
+    <h3>Aros Éter</h3>
+    <p>Textura grabada · dorado</p>
+    <a href="https://wa.me/543456257273" class="btn">Consultar</a>
+  </div>
+
+  <div class="card">
+    <img src="imagenes/aros-brillo.jpg" alt="Aros Lumen">
+    <h3>Aros Lumen</h3>
+    <p>Con incrustaciones brillantes</p>
+    <a href="https://wa.me/543456257273" class="btn">Consultar</a>
+  </div>
+
+  <div class="card">
+    <img src="imagenes/anillo-luz.jpg" alt="Anillo Aura">
+    <h3>Anillo Aura</h3>
+    <p>Minimalista con piedra central</p>
+    <a href="https://wa.me/543456257273" class="btn">Consultar</a>
+  </div>
+
+</div>
