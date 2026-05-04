@@ -25,8 +25,8 @@ header {
   padding: 50px 20px 10px;
   text-align: center;
   font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  letter-spacing: 8px;
+  font-size: 32px;
+  letter-spacing: 10px;
 }
 
 /* NAV */
@@ -47,18 +47,18 @@ nav a:hover {
   color: #000;
 }
 
-/* HERO TEXTO */
+/* HERO */
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
 }
 
 .hero p {
   max-width: 600px;
   margin: auto;
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  line-height: 1.5;
+  font-size: 24px;
+  line-height: 1.6;
 }
 
 /* SECTION */
@@ -70,14 +70,15 @@ nav a:hover {
 .section h2 {
   font-family: 'Playfair Display', serif;
   margin-bottom: 40px;
+  font-size: 24px;
 }
 
 /* PRODUCTOS */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 40px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -85,18 +86,25 @@ nav a:hover {
   text-align: center;
 }
 
-/* IMAGEN PLACEHOLDER */
-.image-placeholder {
+/* IMÁGENES */
+.card img {
   width: 100%;
   aspect-ratio: 1/1;
-  background: #f2f2f2;
-  border-radius: 20px;
+  object-fit: cover;
+  border-radius: 18px;
   margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
 
+.card img:hover {
+  transform: scale(1.03);
+}
+
+/* TEXTO */
 .card h3 {
   font-weight: 400;
   font-size: 16px;
+  margin-bottom: 5px;
 }
 
 .card p {
@@ -104,6 +112,7 @@ nav a:hover {
   color: #777;
 }
 
+/* BOTÓN */
 .btn {
   display: inline-block;
   margin-top: 10px;
@@ -112,11 +121,23 @@ nav a:hover {
   text-decoration: none;
   font-size: 12px;
   color: #111;
+  transition: 0.3s;
 }
 
 .btn:hover {
   background: #111;
   color: white;
+}
+
+/* INSTAGRAM */
+.instagram {
+  margin-top: 80px;
+}
+
+.instagram a {
+  text-decoration: none;
+  color: #111;
+  border-bottom: 1px solid #111;
 }
 
 /* FOOTER */
@@ -153,27 +174,34 @@ footer {
   <div class="products">
 
     <div class="card">
-      <div class="image-placeholder"></div>
-      <h3>Producto 1</h3>
-      <p>Descripción breve</p>
+      <img src="imagenes/aros1.jpg">
+      <h3>Aros Aura</h3>
+      <p>Acero quirúrgico</p>
       <a href="https://wa.me/543456257273" class="btn">Consultar</a>
     </div>
 
     <div class="card">
-      <div class="image-placeholder"></div>
-      <h3>Producto 2</h3>
-      <p>Descripción breve</p>
+      <img src="imagenes/anillo1.jpg">
+      <h3>Anillo Nova</h3>
+      <p>Minimalista</p>
       <a href="https://wa.me/543456257273" class="btn">Consultar</a>
     </div>
 
     <div class="card">
-      <div class="image-placeholder"></div>
-      <h3>Producto 3</h3>
-      <p>Descripción breve</p>
+      <img src="imagenes/collar1.jpg">
+      <h3>Collar Sol</h3>
+      <p>Baño dorado</p>
       <a href="https://wa.me/543456257273" class="btn">Consultar</a>
     </div>
 
   </div>
+</section>
+
+<section class="instagram">
+  <p>
+    Seguinos en 
+    <a href="https://instagram.com/AVA.jewels_">@AVA.jewels_</a>
+  </p>
 </section>
 
 <footer>
