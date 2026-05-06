@@ -1,0 +1,15 @@
+{
+  "name": "ava-jewels",
+  "version": "1.0.0",
+  "description": "AVA Jewelry Website",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static HTML project - no build needed'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  }
+}
